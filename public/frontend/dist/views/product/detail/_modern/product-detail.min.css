@@ -1,0 +1,108 @@
+.ProductStrip-title {
+  font-size: var(--textLg);
+}
+
+.ProductDetail-frame {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  grid-gap: var(--spaceMd) var(--spaceLg);
+  margin-bottom: 2rem;
+  grid-template-areas: "detailImages detailHeader" "detailImages detailDesc" "detailImages detailInfo" "detailGifts detailInfo" "detailGifts icon";
+}
+
+@media (max-width: 64rem) {
+  .ProductDetail-frame {
+    grid-template-areas: "detailImages detailHeader" "detailImages detailDesc" "detailImages detailInfo" "detailGifts detailInfo" "icon 0";
+  }
+}
+
+@media (max-width: 48rem) {
+  .ProductDetail-frame {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-gap: var(--spaceMd);
+    grid-template-areas: "detailHeader" "detailImages" "detailDesc" "detailInfo" "detailGifts" "icon";
+  }
+}
+
+.ProductDetail-header {
+  grid-area: detailHeader;
+}
+
+.ProductDetail-gifts {
+  grid-area: detailGifts;
+  align-self: flex-start;
+}
+
+.ProductDetail-images {
+  grid-area: detailImages;
+  overflow: hidden;
+}
+
+@media (max-width: 48rem) {
+  .ProductDetail-images {
+    overflow: visible;
+  }
+}
+
+.ProductDetail-info {
+  grid-area: detailInfo;
+}
+
+@media (max-width: 1350px) {
+  .ProductDetailTopInfo-imgDesc {
+    display: none;
+  }
+  .ProductDetailTopInfo .ButtonBase--primary {
+    margin-right: -1.8em;
+  }
+  .ProductDetailTopInfo .AppHeader-languageBtn {
+    margin-left: 0;
+  }
+  .ProductDetailTopInfo .AppHeader-languageBtn::after {
+    right: unset;
+  }
+  .ProductDetailTopInfo .Button-priceSpan {
+    font-size: var(--textRg);
+    padding-left: var(--spaceRg);
+  }
+}
+
+@media (max-width: 700px) {
+  .ProductDetailTopInfo-link {
+    display: none;
+  }
+  .ProductDetailTopInfo .Button-price {
+    display: none;
+  }
+  .ProductDetailTopInfo .AppHeader-languageBtn {
+    margin-left: 0;
+    padding: var(--spaceXxxs) var(--spaceXxs);
+    flex: 1;
+  }
+  .ProductDetailTopInfo .AppHeader-languageBtn::after {
+    background-image: none;
+    width: 1px;
+    height: 16px;
+    background: #dedede;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 0;
+  }
+  .ProductDetailTopInfo .AppHeader-languageBtn:last-of-type::after {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .ProductDetailTopInfo {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ProductDetailTopInfo .AppHeader-languageBtn::after {
+    margin-left: var(--spaceSm);
+  }
+}
+
+/*# sourceMappingURL=product-detail.min.css.map */

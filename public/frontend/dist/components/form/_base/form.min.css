@@ -1,0 +1,89 @@
+.AppForm form, .AppForm-holder {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 32rem) {
+  .AppForm form, .AppForm-holder {
+    grid-template-columns: 1fr;
+  }
+}
+
+.AppForm-subTitle {
+  border-top: 1px dashed var(--colorOutlines);
+  padding-top: var(--spaceSm);
+}
+
+.AppForm-perex {
+  margin-bottom: var(--spaceMd);
+}
+
+.AppForm-col.is-inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.AppForm-col.is-right {
+  justify-self: flex-end;
+}
+
+.AppForm-label {
+  font-size: var(--textSm);
+  font-weight: 700;
+  margin: 0 0 .2em;
+  display: block;
+}
+
+.AppForm-label.is-danger {
+  color: var(--colorErrorsDefault);
+}
+
+.AppForm-label.is-required:after {
+  content: '*';
+  color: var(--colorErrorsDefault);
+  margin-left: .15em;
+}
+
+.AppForm-label.is-inline {
+  flex: 1;
+  margin-left: var(--spaceSm);
+}
+
+.AppForm-element {
+  position: relative;
+}
+
+.AppForm-bubble {
+  position: absolute;
+  top: var(--sizeInputPaddingHorizontal);
+  right: .5em;
+  transform: translateY(-50%);
+}
+
+.AppForm-bubble.is-inline {
+  position: relative;
+  top: 0;
+  right: 0;
+  transform: none;
+  margin: 0.15em 0 0 var(--spaceSm);
+}
+
+select + .AppForm-bubble {
+  right: 1.9em;
+}
+
+.AppForm-gdpr {
+  font-size: var(--textXs);
+  padding-bottom: .4em;
+}
+
+.AppForm-underNotes {
+  font-size: var(--textXs);
+}
+
+.AppForm-underNotes span {
+  color: var(--colorErrorsDefault);
+}
+
+/*# sourceMappingURL=form.min.css.map */

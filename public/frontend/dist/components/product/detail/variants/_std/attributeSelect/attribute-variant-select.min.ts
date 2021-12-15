@@ -1,0 +1,155 @@
+"use strict";
+
+class AttributeVariantSelect extends Component {
+  constructor(el) {
+    super(el);
+    this.selects = this.$findAll('[data-attribute]');
+    this.selectedValues = new Map();
+    this.lastSelectedVariant = undefined;
+
+    for (const select of this.selects) {
+      this.selectedValues.set(Number.parseInt(select.dataset.attribute), null);
+    }
+
+    this.addEventListeners();
+  }
+
+  changeVariant() {
+    
+    const variant = this.findVariant(this.selectedValues);
+    if (variant !== undefined && this.lastSelectedVariant !== undefined && variant.id === this.lastSelectedVariant.id) {
+      return;
+    }
+
+    if (variant === undefined) {
+      return;
+    }
+
+    this.lastSelectedVariant = variant;
+    window.location.hash = '#' + variant.id;
+    EventBus.getInstance().dispatchEvent('productVariantChanged', variant);
+  }
+
+  onAttributeSet({
+    detail: data
+  }) {
+
+    if (this.selectedValues.has(data.attribute) && this.selectedValues.get(data.attribute) !== data.value) {
+      this.selectedValues.set(data.attribute, data.value);
+      this.changeVariant();
+      this.updatePricePredictions(this.lastSelectedVariant);
+    }
+  }
+
+  findVariant(map) {
+    for (const value of map) {
+
+      if (value === null) {
+        return undefined;
+      }
+    }
+
+    for (const i in window.variantData) {
+      if (!window.variantData.hasOwnProperty(i)) {
+        continue;
+      }
+      
+      let variant = window.variantData[i];
+      let doesNotFit = false;
+
+      for (let [index, value] of map) {
+        index = Number.parseInt(index);
+        value = Number.parseInt(value);
+
+        if (Util.hasProperty(variant.variantSelectAttributeValues, index) && variant.variantSelectAttributeValues[index].indexOf(value) <= -1) {
+          doesNotFit = true;
+          break;
+        } else if (!Util.hasProperty(variant.variantSelectAttributeValues, index)) {
+          doesNotFit = true;
+          break;
+        }
+      }
+
+      if (doesNotFit) {
+        continue;
+      }
+
+      return variant;
+    }
+
+    return undefined;
+  }
+
+  updatePricePredictions(variant) {
+    const currentSet = new Map(this.selectedValues);
+
+    for (const i of currentSet.values()) {
+      if (i === null) {
+        return;
+      }
+    }
+
+    EventBus.getInstance().dispatchEvent('attributePricePredictionChanged', {
+      predictor: (attribute, value) => {
+        if (currentSet.has(attribute)) {
+          const possibleValues = new Map(currentSet);
+          possibleValues.set(attribute, value);
+          const possibleVariant = this.findVariant(possibleValues);
+
+          if (possibleVariant) {
+            const price = variant !== undefined ? possibleVariant.plainTextPriceVat - variant.plainTextPriceVat : possibleVariant.plainTextPriceVat;
+            return {
+              price: price,
+              same: variant !== undefined && variant.id === possibleVariant.id
+            };
+          }
+
+          return {
+            price: undefined,
+            same: variant === possibleVariant
+          };
+        }
+
+        return undefined;
+      }
+    });
+  }
+
+  onProductVariantChanged({
+    detail: variant
+  }) {
+    if (!this.lastSelectedVariant || this.lastSelectedVariant.id !== variant.id) {
+      this.lastSelectedVariant = variant;
+
+      for (const attribute of this.selects) {
+        const attributeId = Number.parseInt(attribute.dataset.attribute);
+
+        if (Util.hasProperty(variant.variantSelectAttributeValues, attributeId)) {
+          let firstPossible = variant.variantSelectAttributeValues[attributeId].find(e => {
+            return Util.hasProperty(attributeData[attributeId], Number.parseInt(e));
+          });
+
+          if (firstPossible !== undefined) {
+            firstPossible = Number.parseInt(firstPossible);
+            const data = {
+              attribute: Number.parseInt(attribute.dataset.attribute),
+              value: firstPossible
+            };
+            EventBus.getInstance().dispatchEvent('attributeChanged', data);
+          }
+
+          this.selectedValues.set(attributeId, firstPossible);
+        }
+      }
+
+      this.updatePricePredictions(variant);
+    }
+  }
+
+  addEventListeners() {
+    EventBus.getInstance().addEventListener('attributeChanged', e => this.onAttributeSet(e));
+    EventBus.getInstance().addEventListener('productVariantChanged', e => this.onProductVariantChanged(e));
+  }
+
+}
+//# sourceMappingURL=attribute-variant-select.min.js.map

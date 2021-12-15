@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+// import Naprimo from './components/Naprimo.vue'
+import PodleAtributu from './components/PodleAtributu.vue'
+// import Gallery from './components/Gallery.vue'
 
-createApp(App).mount('#app')
+createApp(PodleAtributu).mount('#productss')

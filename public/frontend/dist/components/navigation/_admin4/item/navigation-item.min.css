@@ -1,0 +1,170 @@
+@charset "UTF-8";
+.AppNavigationItem {
+  position: relative;
+  font-size: var(--textSm);
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem {
+    margin: 0;
+    font-size: .8rem;
+    border-bottom: 1px solid var(--colorOutlines);
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--colorText);
+  }
+  .AppNavigationItem:last-child {
+    border-bottom: none;
+  }
+}
+
+.AppNavigationItem:last-child {
+  margin-right: 0;
+}
+
+.AppNavigationItem-frame {
+  display: flex;
+  align-items: center;
+}
+
+.AppNavigationItem-opener {
+  display: none;
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem-opener {
+    display: flex;
+    margin-left: .5em;
+  }
+  .AppNavigationItem-opener svg {
+    width: 12px;
+    height: auto;
+    transition: var(--animationBase);
+  }
+  .AppNavigationItem-opener.is-opened svg {
+    transform: rotate(-180deg);
+  }
+}
+
+.AppNavigationItem-link {
+  color: black;
+  text-decoration: none;
+  transition: all .25s ease-in-out;
+  padding: 0 var(--spaceMd);
+  display: block;
+}
+
+.AppNavigationItem-link:first-child {
+  padding-left: 0;
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem-link {
+    padding: .8em 0;
+    flex: 1;
+  }
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem-link.is-active, .AppNavigationItem-link:hover, .AppNavigationItem-link:focus {
+    color: var(--colorBrand);
+    background: transparent;
+    padding: .8em 0;
+    flex: 1;
+  }
+}
+
+.AppNavigationItem-submenu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + .8rem);
+  transition: var(--animationBase);
+  transform-origin: top left;
+  transform: scale(0);
+  opacity: 0;
+  box-shadow: 0 0 20px #0000003b;
+  width: 230px;
+  z-index: var(--layerDropdownZIndex);
+  border-top: 2px solid var(--colorBrand);
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem-submenu {
+    position: static;
+    box-shadow: none;
+    opacity: 0;
+    max-height: 0;
+    transform: rotateX(90deg);
+    overflow: hidden;
+    width: 100%;
+    border-top: 1px dashed var(--colorOutlines);
+  }
+}
+
+.AppNavigationItem-submenu:before {
+  content: '▲';
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  text-align: left;
+  padding-left: 1em;
+  color: var(--colorBrand);
+  line-height: 1;
+  padding-top: 0.4em;
+}
+
+@media (min-width: 64.01rem) {
+  .AppNavigationItem:hover .AppNavigationItem-submenu {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem-submenu.is-opened {
+    opacity: 1;
+    max-height: 1000px;
+    transform: rotateX(0deg);
+  }
+}
+
+.AppNavigationItem-submenu .AppNavigationItem {
+  background: #fff;
+  width: 100%;
+  border-bottom: 1px solid var(--colorOutlines);
+  margin: 0;
+}
+
+.AppNavigationItem-submenu .AppNavigationItem:last-child {
+  border-bottom: none;
+}
+
+.AppNavigationItem-submenu .AppNavigationItem-link {
+  display: block;
+  padding: 10px;
+  font-size: var(--textMd);
+  color: var(--colorText);
+}
+
+.AppNavigationItem-submenu .AppNavigationItem-link.is-active, .AppNavigationItem-submenu .AppNavigationItem-link:hover, .AppNavigationItem-submenu .AppNavigationItem-link:focus {
+  background: transparent;
+  color: var(--colorBrand);
+  text-decoration: none;
+}
+
+@media (max-width: 64rem) {
+  .AppNavigationItem-submenu .AppNavigationItem-link {
+    padding: 1em 0 1em 1.5em;
+    font-weight: 400;
+    font-size: .9em;
+  }
+}
+
+@media (max-width: 1025px) {
+  .AppNavigationItem-link::before {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=navigation-item.min.css.map */

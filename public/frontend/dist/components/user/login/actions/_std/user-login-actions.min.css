@@ -1,0 +1,31 @@
+.UserLoginActions {
+  display: flex;
+  margin-top: var(--spaceMd);
+}
+
+.UserLoginActions-link {
+  font-size: var(--textSm);
+  transition: var(--animationBase);
+  font-weight: 200;
+}
+
+.UserLoginActions-link svg {
+  width: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -.16em;
+  margin-right: .4em;
+}
+
+.UserLoginActions-link:first-child {
+  border-right: 1px solid var(--colorOutlines);
+  padding-right: var(--spaceSm);
+  margin-right: var(--spaceSm);
+}
+
+.UserLoginActions-link:hover, .UserLoginActions-link:active, .UserLoginActions-link:focus {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=user-login-actions.min.css.map */

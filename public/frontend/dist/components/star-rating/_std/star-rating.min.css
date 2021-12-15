@@ -1,0 +1,44 @@
+.StarRating {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.StarRating-holder {
+  position: relative;
+}
+
+.StarRating-stars {
+  position: relative;
+  display: block;
+  height: .9em;
+}
+
+.StarRating-progress {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--colorThemeAccent);
+  border-radius: 0;
+  max-width: 100%;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+}
+
+.StarRating-progress::-moz-progress-bar {
+  border-radius: 0;
+  background: var(--starsColor);
+}
+
+.StarRating-progress::-webkit-progress-bar {
+  background: var(--colorSecondaryBg);
+}
+
+.StarRating-progress::-webkit-progress-value {
+  border-radius: 0;
+  background: var(--starsColor);
+}
+
+/*# sourceMappingURL=star-rating.min.css.map */

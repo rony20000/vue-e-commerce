@@ -1,0 +1,68 @@
+.SpinnerGlobal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--colorShadeBg);
+  pointer-events: none;
+  opacity: 0;
+  z-index: var(--layerSpinnerZIndex);
+  transition: var(--animationBase);
+}
+
+.SpinnerGlobal.is-active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.SpinnerGlobal-spinner {
+  margin: auto;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: block;
+  animation: spinner 2s linear infinite;
+}
+
+.SpinnerGlobal-spinner::before, .SpinnerGlobal-spinner::after {
+  display: block;
+  border-radius: 50%;
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-color: var(--colorBrand);
+  animation: pulse 1s alternate linear infinite;
+}
+
+.SpinnerGlobal-spinner::before {
+  margin-left: 25px;
+}
+
+.SpinnerGlobal-spinner::after {
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+@keyframes spinner {
+  0% {
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: .5;
+  }
+}
+
+/*# sourceMappingURL=spinner-global.min.css.map */

@@ -1,0 +1,77 @@
+@charset "UTF-8";
+.Breadcrumbs--modern {
+  background-color: #f8f8ff;
+}
+
+.Breadcrumbs-frame {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Breadcrumbs-addon {
+  margin: 0 var(--spaceMd) 0 0;
+  width: 16.5rem;
+}
+
+@media (max-width: 64rem) {
+  .Breadcrumbs-addon {
+    width: 14.5rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .Breadcrumbs-addon {
+    width: calc(100% + var(--spaceMd) + var(--spaceMd));
+    margin: -1px calc(var(--spaceMd) * -1) var(--spaceMd);
+    order: 2;
+  }
+}
+
+.Breadcrumbs-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+  font-size: var(--textXs);
+  padding: var(--spaceSm) 0;
+}
+
+.Breadcrumbs-item:before {
+  color: var(--colorTextSubtle);
+  margin: 0 var(--spaceXs);
+}
+
+@media (max-width: 48rem) {
+  .Breadcrumbs-item:before {
+    content: '❮';
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 48.01rem) {
+  .Breadcrumbs-item:not(:first-child):before {
+    content: '›';
+  }
+}
+
+@media (max-width: 48rem) {
+  .Breadcrumbs-item:not(:nth-last-child(2)) {
+    display: none;
+  }
+}
+
+.Breadcrumbs-item a {
+  text-decoration: none;
+  color: var(--colorText);
+}
+
+.Breadcrumbs-item a[href] {
+  text-decoration: underline;
+  transition: var(--animationBase);
+}
+
+.Breadcrumbs-item a[href]:hover {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=breadcrumbs.min.css.map */

@@ -1,0 +1,99 @@
+.ProductDetailImages {
+  position: relative;
+}
+
+.ProductDetailImages-tags {
+  position: absolute;
+  left: 0;
+  top: 1em;
+}
+
+@media (max-width: 48rem) {
+  .ProductDetailImages-tags {
+    left: -20px;
+  }
+}
+
+.ProductDetailImages-mainSlider, .ProductDetailImages-thumbSlider {
+  position: relative;
+  overflow: hidden;
+}
+
+.ProductDetailImages-mainWrapper, .ProductDetailImages-thumbWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: var(--layerNullZIndex);
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+  transform: translate3d(0, 0, 0);
+}
+
+.ProductDetailImages-mainSlide, .ProductDetailImages-thumbSlide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
+}
+
+.ProductDetailImages-thumbHolder {
+  display: flex;
+  align-items: center;
+  margin-top: var(--spaceMd);
+}
+
+.ProductDetailImages-thumbSlider {
+  flex: 1;
+}
+
+.ProductDetailImages-prev, .ProductDetailImages-next {
+  color: var(--colorText);
+  cursor: pointer;
+  transition: var(--animationBase);
+  padding: 5px 22px 0 16px;
+}
+
+.ProductDetailImages-prev:hover, .ProductDetailImages-next:hover {
+  background-color: #f8f8ff;
+}
+
+.ProductDetailImages-prev:hover, .ProductDetailImages-prev:active, .ProductDetailImages-prev:focus, .ProductDetailImages-next:hover, .ProductDetailImages-next:active, .ProductDetailImages-next:focus {
+  color: var(--colorBrand);
+}
+
+.ProductDetailImages-prev.swiper-button-disabled, .ProductDetailImages-next.swiper-button-disabled {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ProductDetailImages-prev {
+  margin-left: -.5em;
+}
+
+.ProductDetailImages-next {
+  margin-right: -.5em;
+}
+
+.ProductDetailImages-mainSlide img {
+  width: 100%;
+}
+
+.ProductDetailImages-thumbSlide {
+  transition: var(--animationBase);
+  opacity: .7;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ProductDetailImages-thumbSlide img {
+  display: block;
+  margin: 0 auto;
+}
+
+.ProductDetailImages-thumbSlide.swiper-slide-thumb-active, .ProductDetailImages-thumbSlide:hover, .ProductDetailImages-thumbSlide:focus {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=product-detail-images.min.css.map */

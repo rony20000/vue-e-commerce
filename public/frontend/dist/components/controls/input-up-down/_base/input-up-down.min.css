@@ -1,0 +1,39 @@
+.InputUpDownBase {
+  display: inline-flex;
+  border: 1px solid;
+}
+
+.InputUpDownBase-control {
+  user-select: none;
+  cursor: pointer;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  transition: var(--animationBase);
+}
+
+.InputUpDownBase-control:hover, .InputUpDownBase-control:active, .InputUpDownBase-control:focus {
+  color: var(--colorBrand);
+}
+
+.InputUpDownBase input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background: transparent;
+  width: 40px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  font-size: var(--sizeInputFont);
+  padding: calc(var(--sizeInputPaddingVertical) - 2px) 0.2em;
+  outline: none;
+}
+
+.InputUpDownBase input::-webkit-outer-spin-button, .InputUpDownBase input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*# sourceMappingURL=input-up-down.min.css.map */

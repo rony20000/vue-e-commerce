@@ -1,0 +1,127 @@
+.HeaderCart {
+  position: relative;
+  margin-left: var(--spaceMd);
+}
+
+@media (max-width: 32rem) {
+  .HeaderCart {
+    margin: 0 var(--spaceXs) 0 0;
+  }
+}
+
+.HeaderCart-opener {
+  position: relative;
+  border-radius: .25rem;
+  padding: var(--spaceXs) var(--spaceSm);
+  display: flex;
+  align-items: center;
+  font-size: var(--textXs);
+  color: hsl(0, 0%, calc((var(--colorBrand-l) - 60) * -100%));
+  cursor: pointer;
+  transition: var(--animationBase);
+}
+
+.HeaderCart-opener svg {
+  color: #d9d9d9;
+}
+
+@media (max-width: 48rem) {
+  .HeaderCart-opener svg {
+    color: #0095ff;
+  }
+}
+
+.HeaderCart-opener:hover, .HeaderCart-opener:active, .HeaderCart-opener:focus {
+  text-decoration: none;
+  color: inherit;
+  background: var(--colorBrandBg);
+}
+
+.HeaderCart-opener:hover-number, .HeaderCart-opener:active-number, .HeaderCart-opener:focus-number {
+  color: white;
+}
+
+.HeaderCart-info {
+  margin-left: var(--spaceXs);
+}
+
+.HeaderCart-number {
+  color: var(--colorBrand);
+  font-size: var(--textSm);
+  display: block;
+  text-align: left;
+  margin-left: var(--spaceRg);
+}
+
+@media (max-width: 48rem) {
+  .HeaderCart-number {
+    display: none;
+  }
+}
+
+.HeaderCart-plus {
+  position: absolute;
+  left: 23px;
+  top: 5px;
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 48rem) {
+  .HeaderCart-plus {
+    display: none;
+  }
+}
+
+.HeaderCart-label {
+  margin-left: var(--spaceXs);
+}
+
+@media (max-width: 32rem) {
+  .HeaderCart-label {
+    display: none;
+  }
+}
+
+.HeaderCart-price {
+  color: black;
+  font-weight: bold;
+  display: block;
+  font-size: 1rem;
+  margin-top: -5px;
+}
+
+@media (max-width: 48rem) {
+  .HeaderCart-price {
+    display: none;
+  }
+}
+
+.HeaderCart-dropdown {
+  position: absolute;
+  z-index: var(--layerDropdownZIndex);
+  top: calc(100% + .8rem);
+  right: 0;
+  transition: var(--animationBase);
+  transform-origin: top right;
+  transform: scale(0);
+  opacity: 0;
+}
+
+@media (max-width: 64rem) {
+  .HeaderCart-dropdown {
+    right: -3em;
+  }
+}
+
+.HeaderCart-dropdown.is-opened {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/*# sourceMappingURL=header-cart.min.css.map */

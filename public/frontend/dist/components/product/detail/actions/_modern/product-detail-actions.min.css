@@ -1,0 +1,93 @@
+.ProductDetailActions {
+  margin-bottom: var(--spaceMd);
+  background: #fafaff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spaceXs) var(--spaceMd);
+}
+
+@media (max-width: 48rem) {
+  .ProductDetailActions {
+    margin: 0 -2.3rem;
+    padding: var(--spaceXs) var(--spaceLg);
+  }
+}
+
+.ProductDetailActions:last-child {
+  margin-bottom: 0;
+}
+
+.ProductDetailActions-pricing {
+  margin-right: var(--spaceSm);
+  padding: var(--spaceSm) 0;
+}
+
+.ProductDetailActions-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  width: 100%;
+  padding: var(--spaceSm) 0;
+}
+
+@media (max-width: 32rem) {
+  .ProductDetailActions-buttons {
+    width: 100%;
+  }
+}
+
+.ProductDetailActions .ButtonBase {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+@media (max-width: 32rem) {
+  .ProductDetailActions-amount {
+    margin-right: auto;
+  }
+}
+
+.ProductDetailActions .InputUpDownBase-control {
+  width: 2.9rem;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+}
+
+.ProductDetailActions .InputUpDownBase-control:hover {
+  color: var(--colorStockIn);
+}
+
+.ProductDetailActions .InputUpDownBase {
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  align-self: center;
+  width: 63%;
+  margin-left: auto;
+  margin-right: var(--spaceXs);
+}
+
+.ProductDetailActions .InputUpDownBase input {
+  border: none;
+}
+
+@media (max-width: 1350px) {
+  .ProductDetailActions-buttons {
+    padding: 0;
+  }
+  .ProductDetailActions .InputUpDownBase {
+    grid-column: 2/4;
+    width: 133px;
+  }
+  .ProductDetailActions .ButtonBase {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=product-detail-actions.min.css.map */

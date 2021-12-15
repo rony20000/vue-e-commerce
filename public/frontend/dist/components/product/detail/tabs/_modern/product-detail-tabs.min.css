@@ -1,0 +1,9 @@
+.ProductDetailTabs {
+  margin-bottom: var(--spaceXl);
+}
+
+.ProductDetailTabs:last-child {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=product-detail-tabs.min.css.map */

@@ -1,0 +1,25 @@
+.TextareaBase {
+  width: 100%;
+  height: 7.8em;
+  display: block;
+  resize: vertical;
+  border: var(--sizeInputBorder) solid var(--colorInputBorder);
+  background: var(--colorInputBackground);
+  border-radius: var(--sizeInputBorderRadius);
+  padding: var(--sizeInputPadding);
+  font-size: var(--sizeInputFont);
+  transition: var(--animationBase);
+  outline: none;
+}
+
+.TextareaBase.is-invalid {
+  border-color: var(--colorErrorsDefault);
+  background-color: var(--colorInputBackgroundInvalid);
+}
+
+.TextareaBase:focus {
+  border-color: var(--colorInputBorderFocus);
+  background-color: var(--colorInputBackgroundFocus);
+}
+
+/*# sourceMappingURL=textarea.min.css.map */

@@ -1,0 +1,66 @@
+@media (max-width: 64rem) {
+  .AppNavigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: calc(100vw - 2rem);
+    background: var(--colorThemeAccent);
+    box-shadow: 0 0 32px #0000005c;
+    padding: 0;
+    z-index: var(--layerDropdownZIndex);
+    overflow: auto;
+    transition: var(--animationBase);
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  .AppNavigation.is-opened {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 64rem) {
+  .AppNavigation-frame {
+    padding: 0;
+  }
+}
+
+.AppNavigation-closer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--colorBrand);
+  color: hsl(0, 0%, calc((var(--colorBrand-l) - 60) * -100%));
+  transition: var(--animationBase);
+}
+
+.AppNavigation-closer:hover, .AppNavigation-closer:active, .AppNavigation-closer:focus {
+  background: hsl(var(--colorBrand-h), calc(var(--colorBrand-s) * 1%), calc(var(--colorBrand-l) * 0.8 * 1%));
+}
+
+@media (min-width: 64.01rem) {
+  .AppNavigation-closer {
+    display: none;
+  }
+}
+
+.AppNavigation-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 64rem) {
+  .AppNavigation-list {
+    flex-direction: column;
+    padding: var(--spaceLg);
+  }
+}
+
+/*# sourceMappingURL=navigation.min.css.map */

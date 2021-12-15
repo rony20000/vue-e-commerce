@@ -1,0 +1,53 @@
+.ProductTags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: var(--layerPageZIndex);
+}
+
+.ProductTags--lg {
+  font-size: 1.1em;
+}
+
+.ProductTags-tag {
+  font-size: var(--textXs);
+  margin-bottom: .15em;
+  padding: .4em .9em;
+  background: var(--colorText);
+  color: #fff;
+}
+
+.ProductTags-tag.is-tagRecommended {
+  background: #3498db;
+}
+
+.ProductTags-tag.is-discounted {
+  background: #e74c3c;
+}
+
+.ProductTags-tag.is-tagNew {
+  background: #27ae60;
+}
+
+.ProductTags-tag.is-tagSale {
+  background: #f39c12;
+}
+
+.ProductTags-tag.is-tagUsed {
+  background: #34495e;
+}
+
+.ProductTags-tag.is-tagAction {
+  background: #9b59b6;
+}
+
+.ProductTags-tag.is-tagFreeStorePickup {
+  background: #2c3e50;
+}
+
+.ProductTags-tag.is-tagFreeDelivery {
+  background: #2c3e50;
+}
+
+/*# sourceMappingURL=product-tags.min.css.map */
