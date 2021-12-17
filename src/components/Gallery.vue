@@ -14,27 +14,20 @@
             </span>
         </div>
 
-        <div class="ProductDetailImages-mainSlider" data-swiper-main data-gallery-group>
+        <div class="ProductDetailImages-mainSlider" data-gallery-group>
             <div class="ProductDetailImages-mainWrapper">
-                <div
-                    v-for="(picture, index) in pictures"
-                    :key="index"
-                    class="ProductDetailImages-mainSlide swiper-slide"
-                >
+                <div class="ProductDetailImages-mainSlide">
                     <a
-                        href="/data/storage/thumbs/1600x1600-scaleshrink-ke/images/test-data/marketing\content-marketing-4111003_1920.jpg"
+                        :href="activePicture"
                         data-lightgallery="j07vpyx5yn4m"
                         title="Pátá fotografie: Content Marketing"
                     >
                         <picture>
-                            <source
-                                srcset="/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing\content-marketing-4111003_1920.jpg.webp"
-                                type="image/webp"
-                            />
+                            <source :srcset="`${activePicture}.webp`" type="image/webp" />
                             <img
                                 class="lazy"
                                 loading="lazy"
-                                src="/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing\content-marketing-4111003_1920.jpg"
+                                :src="activePicture"
                                 width="630"
                                 height="420"
                                 alt="Pátá fotografie: Content Marketing"
@@ -46,7 +39,7 @@
             </div>
         </div>
         <div class="ProductDetailImages-thumbHolder">
-            <div class="ProductDetailImages-prev">
+            <div class="ProductDetailImages-prev" v-on:click="decrease()">
                 <svg
                     width="18"
                     height="18"
@@ -59,22 +52,21 @@
                     />
                 </svg>
             </div>
-            <div class="ProductDetailImages-thumbSlider swiper-container" data-swiper-thumb>
-                <div class="ProductDetailImages-thumbWrapper swiper-wrapper">
+            <div class="ProductDetailImages-thumbSlider">
+                <div class="ProductDetailImages-thumbWrapper">
                     <div
                         v-for="(picture, index) in pictures"
                         :key="index"
-                        class="ProductDetailImages-thumbSlide swiper-slide"
+                        class="ProductDetailImages-thumbSlide"
+                        :class="(picturesFirstIndex > index || picturesLastIndex < index) && 'u-hidden'"
+                        v-on:click="changeActivePicture(index)"
                     >
                         <picture>
-                            <source
-                                srcset="/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png.webp"
-                                type="image/webp"
-                            />
+                            <source :srcset="`${picture}.webp`" type="image/webp" />
                             <img
                                 class="lazy"
                                 loading="lazy"
-                                src="/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png"
+                                :src="picture"
                                 width="120"
                                 height="80"
                                 alt="Clevero Easy"
@@ -84,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ProductDetailImages-next">
+            <div class="ProductDetailImages-next" v-on:click="increase()">
                 <svg
                     width="18"
                     height="18"
@@ -101,39 +93,61 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     name: 'Gallery',
     data() {
-        // eslint-disable-next-line
         const pictures = [
-            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png.webp",
-            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png.webp",
-            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png.webp",
-            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png.webp"
+            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png",
+            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/apexsystems-logo.png",
+            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/blackreality.png",
+            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/clevero-sablona-hodinky.jpg",
+            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/digital-marketing-1433427_1920.jpg",
+            "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/content-marketing-4111003_1920.jpg",
         ]
+        const picturesBig = [
+            "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png",
+            "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/apexsystems-logo.png",
+            "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/blackreality.png",
+            "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/clevero-sablona-hodinky.jpg",
+            "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/digital-marketing-1433427_1920.jpg",
+            "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/content-marketing-4111003_1920.jpg",
+        ]
+        let picturesFirstIndex = 0
+        let picturesLastIndex = 3
         return {
-            pictures,
+            picturesBig: picturesBig as string[],
+            pictures: pictures as string[],
+            activePicture: picturesBig[0] as string,
+            picturesFirstIndex: picturesFirstIndex as number,
+            picturesLastIndex: picturesLastIndex as number,
         }
     },
     methods: {
-        print(item) {
-            console.log(item)
+        increase() {
+            if (this.picturesLastIndex + 1 === this.pictures.length) return
+            this.picturesLastIndex = ++this.picturesLastIndex
+            this.picturesFirstIndex = ++this.picturesFirstIndex
         },
-        print2(item, item2) {
-            console.log(item, item2)
+        decrease() {
+            if (this.picturesFirstIndex === 0) return
+            this.picturesLastIndex = --this.picturesLastIndex
+            this.picturesFirstIndex = --this.picturesFirstIndex
         },
-        print3(item, item2, item3) {
-            console.log(item, item2, item3)
-        },
-        print4(item, item2, item3, item4) {
-            console.log(item, item2, item3, item4)
-        },
+        changeActivePicture(index: number) {
+            this.activePicture = this.picturesBig[index]
+        }
     },
 
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.ProductDetailImages-thumbSlide {
+    width: 25%;
+}
 </style>
