@@ -1,0 +1,13 @@
+.FooterNav-item {
+  margin-bottom: var(--spaceXs);
+}
+
+.FooterNav-item a {
+  color: inherit;
+}
+
+.FooterNav-item a:hover, .FooterNav-item a:active, .FooterNav-item a:focus {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=footer-nav.min.css.map */

@@ -95,52 +95,58 @@
 
 <script lang="ts">
 
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
     name: 'Gallery',
-    data() {
-        const pictures = [
+    setup() {
+        const pictures = ref<string[]>([
             "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png",
             "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/apexsystems-logo.png",
             "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/blackreality.png",
             "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/clevero-sablona-hodinky.jpg",
             "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/digital-marketing-1433427_1920.jpg",
             "/data/storage/thumbs/120x80-scaleexpand/images/test-data/marketing/content-marketing-4111003_1920.jpg",
-        ]
-        const picturesBig = [
+        ])
+        const picturesBig = ref<string[]>([
             "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/pripadovka-dekstone.png",
             "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/apexsystems-logo.png",
             "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/blackreality.png",
             "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/clevero-sablona-hodinky.jpg",
             "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/digital-marketing-1433427_1920.jpg",
             "/data/storage/thumbs/630x420-scaleexpand/images/test-data/marketing/content-marketing-4111003_1920.jpg",
-        ]
-        let picturesFirstIndex = 0
-        let picturesLastIndex = 3
+        ])
+        let activePicture = ref<string>(picturesBig.value[0])
+        let picturesFirstIndex = ref<number>(0)
+        let picturesLastIndex = ref<number>(3)
+
+        const increase = () => {
+            if (picturesLastIndex.value + 1 === pictures.value.length) return
+            picturesLastIndex.value = ++picturesLastIndex.value
+            picturesFirstIndex.value = ++picturesFirstIndex.value
+        }
+
+        const decrease = () => {
+            if (picturesFirstIndex.value === 0) return
+            picturesLastIndex.value = --picturesLastIndex.value
+            picturesFirstIndex.value = --picturesFirstIndex.value
+        }
+
+        const changeActivePicture = (index: number) => {
+            activePicture.value = picturesBig.value[index]
+        }
+
         return {
-            picturesBig: picturesBig as string[],
-            pictures: pictures as string[],
-            activePicture: picturesBig[0] as string,
-            picturesFirstIndex: picturesFirstIndex as number,
-            picturesLastIndex: picturesLastIndex as number,
+            pictures,
+            picturesBig,
+            activePicture,
+            picturesFirstIndex,
+            picturesLastIndex,
+            increase,
+            decrease,
+            changeActivePicture
         }
-    },
-    methods: {
-        increase() {
-            if (this.picturesLastIndex + 1 === this.pictures.length) return
-            this.picturesLastIndex = ++this.picturesLastIndex
-            this.picturesFirstIndex = ++this.picturesFirstIndex
-        },
-        decrease() {
-            if (this.picturesFirstIndex === 0) return
-            this.picturesLastIndex = --this.picturesLastIndex
-            this.picturesFirstIndex = --this.picturesFirstIndex
-        },
-        changeActivePicture(index: number) {
-            this.activePicture = this.picturesBig[index]
-        }
-    },
+    }
 
 })
 </script>

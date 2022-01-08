@@ -1,0 +1,56 @@
+.AppHeader-categories {
+  border-top: 1px solid #ebebff;
+  border-bottom: 1px solid #ebebff;
+}
+
+@media (max-width: 64rem) {
+  .AppHeader-categories {
+    display: none;
+  }
+}
+
+.AppHeader-categoriesList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.AppHeader-category {
+  position: relative;
+  font-size: var(--textSm);
+  flex: 1 0 auto;
+  max-width: calc(100% / 3);
+}
+
+.AppHeader-category:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: var(--spaceRg);
+  bottom: var(--spaceRg);
+  right: 0;
+  width: 1px;
+  background: var(--colorOutlines);
+}
+
+.AppHeader-categoryLink {
+  color: inherit;
+  text-decoration: none;
+  padding: 1.2em var(--spaceMd);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--textSm);
+  transition: var(--animationBase);
+}
+
+.AppHeader-categoryLink svg {
+  margin-right: var(--spaceXs);
+}
+
+.AppHeader-categoryLink.is-active, .AppHeader-categoryLink:hover, .AppHeader-categoryLink:focus {
+  background: transparent;
+  color: var(--colorBrand);
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=header-categories.min.css.map */

@@ -1,0 +1,187 @@
+.QuickSearch {
+  color: var(--colorText);
+  font-size: var(--textXs);
+}
+
+@media (max-width: 64rem) {
+  .QuickSearch {
+    font-size: 1em;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--layerModalZIndex);
+    background: var(--colorShadeBg);
+    pointer-events: none;
+    transition: var(--animationBase);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    opacity: 0;
+    padding: var(--spaceSm);
+    perspective: 250px;
+  }
+  .QuickSearch.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+.QuickSearch-content {
+  position: relative;
+  z-index: var(--layerPageSecondaryZIndex);
+}
+
+@media (max-width: 64rem) {
+  .QuickSearch-content {
+    transform: translateY(80%) rotateX(-110deg) translateZ(-200px) scale(0.8);
+    transform-origin: top center;
+    transition: all 0.4s cubic-bezier(0.64, -0.19, 0.23, 1.33);
+    background: var(--colorThemeAccent);
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    opacity: 0;
+    width: 50rem;
+  }
+}
+
+@media (max-width: 64rem) {
+  .QuickSearch.is-active .QuickSearch-content {
+    transform: translateY(0) rotateX(0) translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.QuickSearch-search {
+  display: flex;
+  align-items: center;
+  padding: .6em 1em;
+  border: 1px solid #fff3;
+  background: var(--colorBrandBg);
+  border-radius: .25em;
+}
+
+@media (max-width: 64rem) {
+  .QuickSearch-search {
+    padding: 1.2em 1.5em;
+  }
+}
+
+.QuickSearch-icon {
+  width: 1.1em;
+  height: auto;
+  margin-right: var(--spaceSm);
+  color: var(--colorBrand);
+}
+
+.QuickSearch-input {
+  flex: 1;
+  height: 1.9em;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  min-width: 0;
+  color: var(--colorText);
+  background: transparent;
+}
+
+.QuickSearch-input::-webkit-search-decoration, .QuickSearch-input::-webkit-search-cancel-button, .QuickSearch-input::-webkit-search-results-button, .QuickSearch-input::-webkit-search-results-decoration {
+  display: none;
+}
+
+.QuickSearch-input::placeholder {
+  color: #999;
+}
+
+.QuickSearch-cancel {
+  cursor: pointer;
+  transition: var(--animationBase);
+  display: none;
+  margin-left: var(--spaceSm);
+}
+
+@media (max-width: 64rem) {
+  .QuickSearch-cancel {
+    display: block;
+  }
+}
+
+.QuickSearch-cancel svg {
+  display: block;
+  width: 1.2em;
+  height: auto;
+}
+
+.QuickSearch-cancel:hover {
+  color: var(--colorBrand);
+}
+
+.QuickSearch-results {
+  overflow: auto;
+  max-height: calc(100vh - 200px);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 100%;
+  background: var(--colorThemeAccent);
+  box-shadow: 0 0 20px #0000004d;
+}
+
+@media (max-width: 64rem) {
+  .QuickSearch-results {
+    max-height: calc(100vh - 120px);
+    position: static;
+    box-shadow: none;
+    border-top: 1px solid #ededed;
+  }
+}
+
+.QuickSearch-noResults {
+  padding: 1em 1.8em;
+  font-size: var(--textSm);
+  font-weight: 600;
+  color: var(--colorErrorsDefault);
+}
+
+.QuickSearch-title {
+  font-weight: 700;
+  padding: .8rem 1rem .2rem;
+}
+
+.QuickSearch-title:after {
+  content: ' ';
+  display: block;
+  width: 1.7em;
+  height: 2px;
+  background: var(--colorBrand);
+  margin-top: .15em;
+}
+
+.Search-btn {
+  padding: var(--spaceXs);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 64rem) {
+  .Search-btn {
+    display: block;
+  }
+}
+
+.Search-btn svg {
+  color: #dbdbdb;
+}
+
+@media (max-width: 48rem) {
+  .Search-btn svg {
+    color: #0095ff;
+  }
+}
+
+/*# sourceMappingURL=quick-search.min.css.map */

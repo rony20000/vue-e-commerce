@@ -1,0 +1,60 @@
+.CartHolderItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "cartImage cartTitle cartRemove" "cartImage cartCount cartPrice";
+  font-size: var(--textXs);
+  grid-gap: .2em;
+  border-bottom: 1px solid var(--colorOutlines);
+  padding-bottom: var(--spaceSm);
+  margin-bottom: var(--spaceSm);
+}
+
+.CartHolderItem-image {
+  grid-area: cartImage;
+  margin-right: var(--spaceSm);
+}
+
+.CartHolderItem-title {
+  grid-area: cartTitle;
+  color: var(--colorText);
+  font-weight: 700;
+  transition: var(--animationBase);
+}
+
+.CartHolderItem-title a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--animationBase);
+}
+
+.CartHolderItem-title a:hover, .CartHolderItem-title a:active, .CartHolderItem-title a:focus {
+  text-decoration: none;
+  color: var(--colorBrand);
+}
+
+.CartHolderItem-count {
+  grid-area: cartCount;
+  align-self: flex-end;
+}
+
+.CartHolderItem-price {
+  grid-area: cartPrice;
+  align-self: flex-end;
+}
+
+.CartHolderItem-remove {
+  grid-area: cartRemove;
+  background: transparent;
+  border: none;
+  justify-self: flex-end;
+  padding: 0;
+  transition: var(--animationBase);
+  cursor: pointer;
+}
+
+.CartHolderItem-remove:hover, .CartHolderItem-remove:active, .CartHolderItem-remove:focus {
+  color: var(--colorBrand);
+}
+
+/*# sourceMappingURL=cart-holder-item.min.css.map */

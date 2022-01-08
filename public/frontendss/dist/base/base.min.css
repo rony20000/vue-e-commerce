@@ -1,0 +1,577 @@
+@charset "UTF-8";
+:root {
+  --colorBrand: hsl(205, 100%, 50%);
+  --colorBrand-h: 205;
+  --colorBrand-s: 100;
+  --colorBrand-l: 50;
+  --colorBrand-contrast: hsl(0, 0%, calc((var(--colorBrand-l) - 60) * -100%));
+  --colorBrandSecondary: hsl(205, 79%, 95%);
+  --colorBrandSecondary-h: 205;
+  --colorBrandSecondary-s: 79;
+  --colorBrandSecondary-l: 95;
+  --colorBodyBg: hsl(0, 0%, 100%);
+  --colorBodyBg-h: 0;
+  --colorBodyBg-s: 0;
+  --colorBodyBg-l: 100;
+  --colorSecondaryBg: hsl(0, 0%, 91%);
+  --colorSecondaryBg-h: 0;
+  --colorSecondaryBg-s: 0;
+  --colorSecondaryBg-l: 91;
+  --colorContrastBg: hsl(203, 28%, 8%);
+  --colorContrastBg-h: 203;
+  --colorContrastBg-s: 28;
+  --colorContrastBg-l: 8;
+  --colorThemeAccent: hsl(0, 0%, 100%);
+  --colorThemeAccent-h: 0;
+  --colorThemeAccent-s: 0;
+  --colorThemeAccent-l: 100;
+  --colorBrandBg: hsla(var(--colorBrand-h), calc(var(--colorBrand-s) * 1%), calc(var(--colorBrand-l) * 1%), 0.12);
+  --colorShadeBg: rgba(0,0,0,.8);
+  --colorOutlines: #e3e3e3;
+  --colorHighlighted: #ba0000;
+  --starsColor: #fcad00;
+  --colorErrorsDefault: hsl(352, 100%, 43%);
+  --colorErrorsDefault-h: 352;
+  --colorErrorsDefault-s: 100;
+  --colorErrorsDefault-l: 43;
+  --colorText: hsl(0, 0%, 0%);
+  --colorText-h: 0;
+  --colorText-s: 0;
+  --colorText-l: 0;
+  --colorTextHeading: black;
+  --colorTextSubtle: #404040;
+  --colorText: black;
+  --colorTextBody: #4a4a4a;
+  --colorLinkText: var(--colorBrand);
+  --colorLinkTextActive: var(--colorText);
+  --colorInputBorder: var(--colorOutlines);
+  --colorInputBackground: var(--colorThemeAccent);
+  --colorInputBorderFocus: #383838;
+  --colorInputBackgroundFocus: var(--colorThemeAccent);
+  --colorInputBackgroundInvalid: var(--colorThemeAccent);
+  --colorButtonBg: var(--colorBrand);
+  --colorButtonDisabledBg: gray;
+  --colorButtonText: white;
+  --stateInfo: #5895f5;
+  --stateSuccess: #4dab00;
+  --stateWarning: #f58c59;
+  --stateError: #dc2727;
+  --colorStockIn: var(--stateSuccess);
+  --colorStockOut: var(--stateError);
+}
+
+:root {
+  --durationAnimationBase: .25s;
+  --easingAnimationBase: ease-in-out;
+  --animationBase: all var(--durationAnimationBase) var(--easingAnimationBase);
+}
+
+:root {
+  --layerNegativeZIndex: -1;
+  --layerNullZIndex: 0;
+  --layerPageZIndex: 1;
+  --layerPageSecondaryZIndex: 2;
+  --layerHeaderZIndex: 10;
+  --layerDropdownZIndex: 20;
+  --layerModalZIndex: 21;
+  --layerPopoverZIndex: 22;
+  --layerTooltipZIndex: 23;
+  --layerSpinnerZIndex: 24;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html.is-not-smooth {
+  scroll-behavior: unset;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: var(--colorBodyBg);
+  margin: 0;
+  font-size: var(--textBaseSize);
+  font-family: var(--font-primary);
+  color: var(--colorText);
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: var(--bodyLineHeight);
+}
+
+body.is-not-overflowed {
+  overflow: hidden;
+}
+
+/* Remove default padding */
+ul,
+ol {
+  padding: 0;
+}
+
+/* Remove default margin */
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none;
+}
+
+::selection {
+  color: hsl(0, 0%, calc((var(--colorBrand-l) - 60) * -100%));
+  background: var(--colorBrand);
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --sizeContentOffset: 1.25rem;
+  --sizeContentOffsetHd: 4%;
+  --sizeContentWidthHd: 120rem;
+  --sizeContentWidthLarge: 87.5rem;
+  --sizeContentWidthMedium: 75rem;
+  --sizeContentWidthSmall: 61.25rem;
+  --sizeInputFont: var(--textSm);
+  --sizeInputPaddingVertical: var(--spaceSm);
+  --sizeInputPaddingHorizontal: var(--spaceMd);
+  --sizeInputPadding: var(--sizeInputPaddingVertical) var(--sizeInputPaddingHorizontal);
+  --sizeInputBorder: 1px;
+  --sizeInputBorderRadius: 0;
+  --sizeButtonFont: var(--textSm);
+  --sizeButtonPaddingVertical: var(--spaceSm);
+  --sizeButtonPaddingHorizontal: var(--spaceLg);
+  --sizeButtonPadding: var(--sizeButtonPaddingVertical) var(--sizeButtonPaddingHorizontal);
+  --sizeButtonBorder: 1px;
+  --sizeButtonBorderRadius: 0;
+}
+
+/*
+	!! DO NOT FORGET TO ADD FONTS TO '@preload.php' FILE AS WELL !!
+	----
+	Overwrite $font-list object in _font-list.scss file !!
+*/
+/* !! DO NOT FORGET TO ADD FONTS TO '@preload-fonts.php' FILE AS WELL !! */
+@font-face {
+  font-family: SourceSansPro;
+  src: url("/frontend/fonts/SourceSansPro/SourceSansPro-bold-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url("/frontend/fonts/SourceSansPro/SourceSansPro-semiBold-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url("/frontend/fonts/SourceSansPro/SourceSansPro-regular-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+.u-frameSm {
+  max-width: calc(var(--sizeContentWidthSmall) + var(--sizeContentOffset) * 2);
+  padding-left: var(--sizeContentOffset);
+  padding-right: var(--sizeContentOffset);
+}
+
+.u-frameMd {
+  max-width: calc(var(--sizeContentWidthMedium) + var(--sizeContentOffset) * 2);
+  padding-left: var(--sizeContentOffset);
+  padding-right: var(--sizeContentOffset);
+}
+
+.u-frameLg {
+  max-width: calc(var(--sizeContentWidthLarge) + var(--sizeContentOffset) * 2);
+  padding-left: var(--sizeContentOffset);
+  padding-right: var(--sizeContentOffset);
+}
+
+.u-frameHd {
+  max-width: calc(var(--sizeContentWidthHd) + var(--sizeContentOffset) * 2);
+  padding-left: var(--sizeContentOffset);
+  padding-right: var(--sizeContentOffset);
+}
+
+.u-frameHdOffset {
+  max-width: calc(var(--sizeContentWidthHd) + var(--sizeContentOffsetHd, var(--sizeContentOffset)) * 2);
+  padding-left: var(--sizeContentOffsetHd, var(--sizeContentOffset));
+  padding-right: var(--sizeContentOffsetHd, var(--sizeContentOffset));
+}
+
+.u-clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.u-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+[class*="u-frame"] {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.u-fullWidth {
+  width: 100%;
+}
+
+.u-block {
+  display: block;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-hiddenVisually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.u-invisibleScrollBar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.u-invisibleScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
+.u-customScrollBar {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-width: thin;
+}
+
+.u-customScrollBar::-webkit-scrollbar {
+  width: .4rem;
+}
+
+.u-customScrollBar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.u-customScrollBar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  transition: all .25s ease-in-out;
+}
+
+.u-customScrollBar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.u-textCenter {
+  text-align: center;
+}
+
+.u-flexJustifyStart {
+  justify-content: flex-start;
+}
+
+.u-flexJustifyEnd {
+  justify-content: flex-end;
+}
+
+.u-flexJustifyCenter {
+  justify-content: center;
+}
+
+.u-flexJustifyBetween {
+  justify-content: space-between;
+}
+
+.u-flexJustifyAround {
+  justify-content: space-around;
+}
+
+.u-flexAlignItemsStart {
+  align-items: flex-start;
+}
+
+.u-flexAlignItemsEnd {
+  align-items: flex-end;
+}
+
+.u-flexAlignItemsCenter {
+  align-items: center;
+}
+
+.u-spanRow {
+  grid-column: 1 / -1;
+}
+
+:root {
+  --font-primary: SourceSansPro, sans-serif;
+  --font-secondary: serif;
+  /* set base values */
+  --textBaseSize: 1rem;
+  --textScaleRatio: 1.2;
+  /* type scale */
+  --textXxs: calc(1em / (var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio)));
+  --textXs: calc(1em / (var(--textScaleRatio) * var(--textScaleRatio)));
+  --textSm: calc(1em / var(--textScaleRatio));
+  --textRg: 1em;
+  --textMd: calc(1em * var(--textScaleRatio));
+  --textLg: calc(1em * var(--textScaleRatio) * var(--textScaleRatio));
+  --textXl: calc(1em * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio));
+  --textXxl: calc(1em * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio));
+  --textXxxl: calc(1em * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio));
+  --textXxxxl: calc(1em * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio) * var(--textScaleRatio));
+  --bodyLineHeight: 1.5;
+  --headingLineHeight: 1.2;
+}
+
+@media (min-width: 48.01rem) {
+  :root {
+    --textBaseSize: 1.15rem;
+  }
+}
+
+@media (min-width: 64.01rem) {
+  :root {
+    --textBaseSize: 1.25rem;
+  }
+}
+
+h1, h2, h3, h4, form legend {
+  color: var(--colorTextHeading);
+  margin-bottom: var(--spaceXs);
+  line-height: var(--headingLineHeight);
+}
+
+/* text size */
+.u-textXxxl {
+  font-size: var(--textXxxl);
+}
+
+h1, .u-textXxl {
+  font-size: var(--textXxl);
+}
+
+h2, .u-textXl {
+  font-size: var(--textXxl);
+  margin-bottom: var(--spaceSm);
+}
+
+h3, .u-textLg {
+  font-size: var(--textLg);
+}
+
+h4, .u-textMd {
+  font-size: var(--textMd);
+}
+
+.u-textSm, small {
+  font-size: var(--textSm);
+}
+
+.u-textXs {
+  font-size: var(--textXs);
+}
+
+p {
+  line-height: var(--bodyLineHeight);
+}
+
+a {
+  color: var(--colorLinkText);
+  text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+  color: var(--colorLinkTextActive);
+  text-decoration: underline;
+}
+
+:root {
+  --spaceUnit:  1em;
+  --spaceXxxxs: calc(0.125 * var(--spaceUnit));
+  --spaceXxxs:  calc(0.25 * var(--spaceUnit));
+  --spaceXxs:   calc(0.375 * var(--spaceUnit));
+  --spaceXs:    calc(0.5 * var(--spaceUnit));
+  --spaceSm:    calc(0.75 * var(--spaceUnit));
+  --spaceRg:    var(--spaceUnit);
+  --spaceMd:    calc(1.25 * var(--spaceUnit));
+  --spaceLg:    calc(2 * var(--spaceUnit));
+  --spaceXl:    calc(3.25 * var(--spaceUnit));
+  --spaceXxl:   calc(5.25 * var(--spaceUnit));
+  --spaceXxxl:  calc(8.5 * var(--spaceUnit));
+  --spaceXxxxl: calc(13.75 * var(--spaceUnit));
+}
+
+.u-spaceUnit {
+  margin-bottom: var(--spaceUnit);
+}
+
+.u-spaceXxxxs {
+  margin-bottom: var(--spaceXxxxs);
+}
+
+.u-spaceXxxs {
+  margin-bottom: var(--spaceXxxs);
+}
+
+.u-spaceXxs {
+  margin-bottom: var(--spaceXxs);
+}
+
+.u-spaceXs {
+  margin-bottom: var(--spaceXs);
+}
+
+.u-spaceSm {
+  margin-bottom: var(--spaceSm);
+}
+
+.u-spaceMd {
+  margin-bottom: var(--spaceMd);
+}
+
+.u-spaceLg {
+  margin-bottom: var(--spaceLg);
+}
+
+.u-spaceXl {
+  margin-bottom: var(--spaceXl);
+}
+
+.u-spaceXxl {
+  margin-bottom: var(--spaceXxl);
+}
+
+.u-spaceXxxl {
+  margin-bottom: var(--spaceXxxl);
+}
+
+.u-spaceXxxxl {
+  margin-bottom: var(--spaceXxxxl);
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 11px);
+  background: #000000de;
+  color: #fff;
+  transform-origin: bottom center;
+  transition: var(--animationBase);
+  transform: translateX(-50%);
+  padding: 17px;
+  font-size: 14px;
+  width: 249px;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 4px;
+  border-bottom: 3px solid var(--colorBrand);
+  pointer-events: none;
+  opacity: 0;
+}
+
+[data-tooltip]:after {
+  content: '▾';
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  width: 249px;
+  font-size: 32px;
+  line-height: 17px;
+  text-align: center;
+  color: var(--colorBrand);
+  transition: var(--animationBase);
+  pointer-events: none;
+  opacity: 0;
+}
+
+[data-tooltip]:hover:before {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+[data-tooltip]:hover:after {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=base.min.css.map */

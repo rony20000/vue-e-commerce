@@ -1,0 +1,135 @@
+.ProductDetailText {
+  display: flex;
+  column-gap: 5em;
+}
+
+.ProductDetailText-item {
+  width: 50%;
+  border-left: 4px solid var(--colorBrand);
+  padding-left: 2em;
+}
+
+.ProductDetailText .ProductDetailSpec {
+  font-size: 1rem;
+  font-weight: 600;
+  width: 50%;
+}
+
+.ProductDetailText .ProductDetailSpec a {
+  text-decoration: underline;
+  grid-row: 1/3;
+}
+
+.ProductDetailText .ProductDetailSpec-item {
+  margin-bottom: var(--spaceLg);
+}
+
+.ProductDetailText .ProductDetailSpec-box {
+  display: flex;
+}
+
+.ProductDetailText .ProductDetailSpec-info {
+  margin-bottom: var(--spaceSm);
+  display: grid;
+  grid-template-columns: 50% 1fr;
+}
+
+.ProductDetailText .ProductDetailSpec-info svg {
+  color: #d9d9d9;
+  cursor: pointer;
+  position: relative;
+  bottom: -2px;
+}
+
+.ProductDetailText .ProductDetailSpec-info svg:hover {
+  color: var(--colorBrand);
+}
+
+.ProductDetailText .ProductDetailSpec-info svg:hover + .ProductDetailSpec-baner {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ProductDetailText .ProductDetailSpec-inner {
+  position: relative;
+}
+
+.ProductDetailText .ProductDetailSpec-baner {
+  background-color: var(--colorBrand);
+  padding: var(--spaceSm) var(--spaceRg);
+  color: var(--colorThemeAccent);
+  position: absolute;
+  font-size: var(--textSm);
+  width: 320px;
+  display: inline-block;
+  z-index: var(--layerPageZIndex);
+  left: 0;
+  bottom: 41px;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s;
+}
+
+.ProductDetailText .ProductDetailSpec-banerSub {
+  width: 20px;
+  height: 50px;
+  background-color: var(--colorBrand);
+  position: absolute;
+  bottom: -14px;
+  z-index: -1;
+  right: 47%;
+  transform: translateX(100%) rotate(45deg);
+}
+
+.ProductDetailText .ProductDetailSpec-titleTop {
+  font-size: var(--textMd);
+  margin-bottom: var(--spaceLg);
+}
+
+.ProductDetailText .ProductDetailSpec-title {
+  font-size: calc(var(--textMd) - .1em);
+  margin-bottom: calc(var(--textMd) - .1em);
+}
+
+.ProductDetailText .ProductDetailSpec-spanTop {
+  grid-row: 1/3;
+}
+
+.ProductDetailText .ProductDetailSpec-span {
+  max-width: 143px;
+  text-align: left;
+  margin-left: var(--spaceSm);
+}
+
+@media (max-width: 1000px) {
+  .ProductDetailText {
+    column-gap: 2em;
+  }
+  .ProductDetailText-item {
+    padding-left: 1em;
+  }
+}
+
+@media (max-width: 826px) {
+  .ProductDetailText {
+    display: block;
+  }
+  .ProductDetailText-item {
+    width: 100%;
+    margin-bottom: var(--spaceLg);
+    margin-left: -20px;
+    border-left: none;
+  }
+  .ProductDetailText .ProductDetailSpec {
+    width: 100%;
+  }
+}
+
+@media (max-width: 350px) {
+  .ProductDetailText .ProductDetailSpec {
+    font-size: 0.8rem;
+  }
+}
+
+/*# sourceMappingURL=product-detail-text.min.css.map */
