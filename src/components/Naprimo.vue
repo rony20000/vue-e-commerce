@@ -14,7 +14,7 @@
 
 import { defineComponent, ref } from 'vue'
 import { variantTypes } from "../types"
-import { EventBus } from "../../public/frontend/dist/global/event-bus.min.js";
+import EventBus from "../../public/frontend/dist/global/event-bus.min.js";
 
 export default defineComponent({
   name: 'Naprimo',
@@ -26,8 +26,8 @@ export default defineComponent({
       const selectedVariant = variants.value.find(variant => variant.id === +variantId);
       if (selectedVariant === undefined) return;
       DefaultSelectedVariant.value = selectedVariant
-      // const test = new EventBus();
-      // test.getInstance().dispatchEvent('productVariantChanged', selectedVariant);
+      const EventBusInstance = new EventBus();
+      EventBusInstance.dispatchEvent('productVariantChanged', selectedVariant);
     }
 
     return {
